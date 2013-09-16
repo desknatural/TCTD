@@ -4,6 +4,7 @@
 #include<vector>
 #include<SFML/Graphics.hpp>
 
+using namespace sf;
 // Applies the IntRect corner coordinates to the VertexArray vertex positions starting at position
 // Preconditions:	vertexArray must have a size greater than or equal to position +4
 void applyRectToPos(sf::IntRect& IntRect, sf::VertexArray& vertexArray, int position ){
@@ -20,9 +21,9 @@ void applyRectToPos(sf::IntRect& IntRect, sf::VertexArray& vertexArray, int posi
 // Preconditions:	vertexArray has size enough to hold all the IntRects, 4 for each one, starting at vertexArray[position]
 //					range is a valid range for the IntRect, the first coordinate the lower bound and the second the higher bound, with
 //						the higher bound equal to or greater than the lower bound
-void applyRectToPos(std::vector<sf::IntRect>::iterator& begin, std::vector<sf::IntRect>::iterator& end, sf::VertexArray& vertexArray, int position){
+void applyRectToPos(IntRectVect::iterator& begin, std::vector<sf::IntRect>::iterator& end, sf::VertexArray& vertexArray, int position){
 	int i=0;
-	for (std::vector<sf::IntRect>::iterator I = begin; I !=end ; ++I) {
+	for (IntRectVect::iterator I = begin; I !=end ; ++I) {
 		applyRectToPos(*I, vertexArray, 4*i+position);
 		++i;
 	}
@@ -44,9 +45,9 @@ void applyRectToTxtCrd(sf::IntRect& IntRect, sf::VertexArray& vertexArray, int p
 // Preconditions:	vertexArray has size enough to hold all the IntRects, 4 for eac5h one, starting at vertexArray[position]
 //					range is a valid range for the IntRect, the first coordinate the lower bound and the second the higher bound, with
 //						the higher bound equal to or greater than the lower bound
-void applyRectToTxtCrd(std::vector<sf::IntRect>::iterator& begin, std::vector<sf::IntRect>::iterator& end, sf::VertexArray& vertexArray, int position){
+void applyRectToTxtCrd(IntRectVect::iterator& begin, std::vector<sf::IntRect>::iterator& end, sf::VertexArray& vertexArray, int position){
 	int i=0;
-	for (std::vector<sf::IntRect>::iterator I = begin; I !=end ; ++I) {
+	for (IntRectVect::iterator I = begin; I !=end ; ++I) {
 		applyRectToTxtCrd(*I, vertexArray, 4*i+position);
 		++i;
 	}

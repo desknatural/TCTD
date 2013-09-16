@@ -11,15 +11,16 @@
 class menuScreen : public gameScreen{
 public:	
 	// Takes the mouseMove event coordinates and does stuff with them
-	menuScreen(){
-	
+	menuScreen(){	
 		if (!IntroScreenTx.loadFromFile("img/IntroScreen.png")){std::cout << "Intro Screen loading error" << std::endl;}
 		IntroScreenSp.setTexture(IntroScreenTx);
 
 		// Initialization of our two important arrays
 		menuScreenItemAreas.reserve(8);	menuScreenItemTextureAreas.reserve(8);
 		for (int i = 0; i < 8; ++i){
+			// Setting the areas in the texture files that map to required textures
 			menuScreenItemTextureAreas.push_back(sf::IntRect(0,60*i, 300, 60));
+			// Setting the areas on the screen that the sprites will be drawn to
 			menuScreenItemAreas.push_back(sf::IntRect(362,320+70*(i%4),300,60));
 		}
 
@@ -42,9 +43,7 @@ private:
 		for(int i= 0; i < 4; ++i){
 			// If 
 			if ( !menuScreenItemAreas.at(i).contains(x,y) ) applyRectToTxtCrd(menuScreenItemTextureAreas.at(i),vertexArray,4*i);
-	
 			else applyRectToTxtCrd(menuScreenItemTextureAreas.at(i+4),vertexArray,4*i);
-
 			}
 		}
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const{
@@ -54,9 +53,9 @@ private:
 	}
 
 	sf::Texture IntroScreenMenuItemsTx;
-	std::vector<sf::IntRect> menuScreenItemAreas;					// Menu item screen areas
-	std::vector<sf::IntRect> menuScreenItemTextureAreas;					// Menu item sprite texture areas
-	sf::VertexArray vertexArray;					// This is a drawable.
+	std::vector<sf::IntRect> menuScreenItemAreas;				// Menu item screen areas
+	std::vector<sf::IntRect> menuScreenItemTextureAreas;			// Menu item sprite texture areas
+	sf::VertexArray vertexArray;						// This is a drawable.
 	sf::Sprite IntroScreenSp;						// This is our background
 	sf::Texture IntroScreenTx;						// Intro screen background splash art
 };
@@ -79,4 +78,3 @@ int main(int argc, char* argv[]){
 	}
 	return 0;
 }
-
