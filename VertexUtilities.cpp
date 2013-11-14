@@ -3,6 +3,8 @@
 #include"VertexUtilities.h"
 #include<vector>
 #include<SFML/Graphics.hpp>
+#include<iostream>
+
 
 using namespace sf;
 // Applies the IntRect corner coordinates to the VertexArray vertex positions starting at position
@@ -16,7 +18,7 @@ void applyRectToPos(sf::IntRect& IntRect, sf::VertexArray& vertexArray, int posi
 		}
 }
 
-// Applies an array of IntRects in the range given by the first two arguments in sf::Vector2i& to the position coordinate of a VertexArray, 
+// Applies an array of IntRects in the range given by the first two arguments in sf::Vector2i& to the position coordinate of a VertexArray,
 // starting from "position" on the VertexArray.
 // Preconditions:	vertexArray has size enough to hold all the IntRects, 4 for each one, starting at vertexArray[position]
 //					range is a valid range for the IntRect, the first coordinate the lower bound and the second the higher bound, with
@@ -40,9 +42,9 @@ void applyRectToTxtCrd(sf::IntRect& IntRect, sf::VertexArray& vertexArray, int p
 	}
 }
 
-// Applies an array of IntRects in the range given by the first two arguments in sf::Vector2i& to the texture coordinate of a VertexArray, 
+// Applies an array of IntRects in the range given by the first two arguments in sf::Vector2i& to the texture coordinate of a VertexArray,
 // starting from "position" on the VertexArray.
-// Preconditions:	vertexArray has size enough to hold all the IntRects, 4 for eac5h one, starting at vertexArray[position]
+// Preconditions:	vertexArray has size enough to hold all the IntRects, 4 for each one, starting at vertexArray[position]
 //					range is a valid range for the IntRect, the first coordinate the lower bound and the second the higher bound, with
 //						the higher bound equal to or greater than the lower bound
 void applyRectToTxtCrd(IntRectVect::iterator& begin, std::vector<sf::IntRect>::iterator& end, sf::VertexArray& vertexArray, int position){

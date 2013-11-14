@@ -8,6 +8,8 @@ public:
 	virtual void eventParse(sf::Event) = 0;
 	virtual gameScreen* nextScreen();
 	virtual ~gameScreen();
+	bool shouldClose;
+    std::vector<int> internalInts;
 private:
 	virtual void draw(sf::RenderTarget&, sf::RenderStates) const=0;
 };

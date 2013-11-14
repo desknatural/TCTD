@@ -1,4 +1,4 @@
-// Header file for MainStage.cpp, this is where the code for where most of the action occurs
+//Header file for MainStage.cpp, this is where the code for where most of the action occurs
 #ifndef MAINSTAGE_H
 #define MAINSTAGE_H
 
@@ -7,6 +7,8 @@
 #include<SFML/Graphics.hpp>
 #include<vector>
 #include<memory>
+#include"GameObjects.hpp"
+
 
 class mainScreen : public gameScreen {
 public:
@@ -14,16 +16,21 @@ public:
 	virtual gameScreen* nextScreen();
 	virtual ~mainScreen();
 	mainScreen();
+	//std::vector<int> internalInts;
 private:
 	virtual void draw(sf::RenderTarget&, sf::RenderStates) const;
 	void _mouseMoved(sf::Event);
 	void _mouseClicked(sf::Event);
 	void _mouseReleased(sf::Event);
-	std::vector<int> internalInts;
+	void _keyPressed(sf::Event);
 	std::vector<std::string> internalIntsLabels;
-	std::vector<std::shared_ptr<sf::Sprite>> sprites;
 	std::vector<std::shared_ptr<sf::Texture>> textures;
-	bool mouseDepressed;
+	std::vector<std::shared_ptr<gameObject>> gameObjects;
+	std::vector<sf::IntRect> objectIntRects;
+	std::vector<std::shared_ptr<sf::Sprite>> sprites;
+	int currentObject;
+	int currentlyClicked;
+	int currentlySelected;
 
 };
 
